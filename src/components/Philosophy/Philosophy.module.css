@@ -1,0 +1,32 @@
+.philosophy {
+	width: 100%;
+	/*background: var(--soft-nude);*/
+	padding: 64px 0;
+}
+.wrapper {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.title {
+	font-family: var(--font-cormorant), serif;
+	font-size: 48px;
+}
+
+.text {
+	position: relative;
+	margin-top: 24px;
+	padding: 16px;
+}
+.text:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 4px;
+	height: 100%;
+	background-color: var(--dusty-rose);
+}
+.text p {
+	margin-bottom: 8px;
+}

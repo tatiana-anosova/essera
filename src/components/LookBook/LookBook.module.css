@@ -1,0 +1,26 @@
+.lookbook {
+	background: var(--soft-nude);
+}
+.wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 64px 0;
+}
+.title {
+	/*font-family: var(--font-cormorant), serif;*/
+	/*font-size: 48px;*/
+	margin: 24px 0;
+	text-align: center;
+}
+.text {
+	margin: 24px 0;
+	text-align: center;
+}
+
+.list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+	justify-content: center;
+	align-items: start;
+}

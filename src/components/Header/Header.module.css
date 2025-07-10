@@ -1,0 +1,59 @@
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	/*height: 94px;*/
+	height: var(--header-height);
+	padding: 0 24px;
+}
+
+header.transparent {
+	background: transparent;
+	transition: background-color 0.3s ease;
+	color: var(--soft-nude);
+}
+
+.header.scrolled {
+	background: var(--white);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	color: var(--black);
+}
+
+.nav {
+	text-transform: uppercase;
+}
+
+.list {
+	display: flex;
+}
+
+.list li {
+	margin-right: 16px;
+	cursor: pointer;
+}
+.list li:last-child {
+	margin-right: 0;
+}
+
+.logo {
+	text-align: center;
+}
+
+.profile {
+	display: flex;
+	justify-items: center;
+	text-align: right;
+}
+.profile .icon {
+	margin-left: 16px;
+	cursor: pointer;
+}
+
+.cart {
+	margin-top: -2px;
+}
