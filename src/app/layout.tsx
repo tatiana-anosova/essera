@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-import { Manrope, Inter, Cormorant_Garamond } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Manrope, Inter, Cormorant_Garamond } from 'next/font/google';
+import './globals.css';
 import { Header, Footer } from '@/components';
 
 const manrope = Manrope({

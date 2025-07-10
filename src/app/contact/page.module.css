@@ -2,3 +2,12 @@
 	max-width: 1200px;
 	margin: 0 auto 64px auto;
 }
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.contact {
+	width: 50%;
+}

@@ -5,3 +5,4 @@ export * from './LookBook/LookBook';
 export * from './LookBookCard/LookBookCard';
 export * from './Philosophy/Philosophy';
 export * from './InstagramIcon/InstagramIcon';
+export * from './ContactForm/ContactForm';

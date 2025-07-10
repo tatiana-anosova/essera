@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import styles from './page.module.css';
 import { Hero, LookBook, Philosophy } from '@/components';
 import clsx from 'clsx';
 

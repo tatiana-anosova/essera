@@ -5,7 +5,7 @@ import { HeaderProps } from './Header.props';
 import styles from './Header.module.css';
 import Image from 'next/image'
 import clsx from 'clsx';
-import Link from "next/link";
+import Link from 'next/link';
 
 export const Header = ({ children, className, ...props }: HeaderProps) => {
 	const pathname = usePathname();
