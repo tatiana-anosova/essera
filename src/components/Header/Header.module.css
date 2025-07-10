@@ -15,7 +15,7 @@
 header.transparent {
 	background: transparent;
 	transition: background-color 0.3s ease;
-	color: var(--soft-nude);
+	color: var(--silk-white);
 }
 
 .header.scrolled {

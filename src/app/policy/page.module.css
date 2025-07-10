@@ -1,0 +1,24 @@
+.main {
+	max-width: 1200px;
+	margin: 0 auto 64px auto;
+}
+
+.updated span {
+	color: var(--dusty-blush);
+}
+
+.subtitle {
+	margin-top: 24px;
+	font-size: 24px;
+}
+
+.main ul {
+	/*margin-top: 12px;*/
+	list-style-type: circle;
+	font-size: 18px;
+}
+
+.main li {
+	margin-top: 12px;
+	margin-left: 20px;
+}

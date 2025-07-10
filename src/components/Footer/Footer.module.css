@@ -1,5 +1,7 @@
 .footer {
 	width: 100%;
+	background-color: var(--soft-charcoal);
+	color: var(--pearl-gray);
 }
 
 .top {
@@ -36,7 +38,7 @@
 	padding: 16px 0;
 	font-size: 14px;
 	letter-spacing: 0.05em;
-	border-top: 1px solid #e0e0e0;
+	border-top: 1px solid var(--pearl-gray);
 }
 
 .list a {
@@ -44,12 +46,14 @@
 	text-decoration: none;
 }
 
-.list a:visited {
+.list a:visited,
+.iconsCol a:visited {
 	color: inherit;
 }
 
-.list a:hover {
-	color: var(--dusty-rose);
+.list a:hover,
+.iconsCol a:hover {
+	color: var(--muted-rose);
 	transition: color 0.2s ease;
 }
 
@@ -58,12 +62,12 @@
 }
 
 /*.list a:focus {*/
-/*	outline: 2px solid var(--dusty-rose);*/
+/*	outline: 2px solid var(--dusty-blush);*/
 /*	outline-offset: 2px;*/
 /*}*/
 
 .icon {
 	width: 24px;
 	height: 24px;
-	color: var(--deep-taupe);
+	color: var(--soft-charcoal);
 }

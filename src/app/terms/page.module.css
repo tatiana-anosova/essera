@@ -1,13 +1,10 @@
 .main {
 	max-width: 1200px;
-	margin: 0 auto;
+	margin: 0 auto 64px auto;
 }
 
 .title {
 	margin-top: 24px;
 	font-size: 20px;
 	color: var(--warm-gray);
-}
-.main p {
-	margin-top: 12px;
 }
