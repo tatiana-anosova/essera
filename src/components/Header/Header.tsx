@@ -24,8 +24,8 @@ export const Header = ({ children, className, ...props }: HeaderProps) => {
 		<header className={clsx(styles.header, {[styles.transparent]: isHome}, { [styles.scrolled]: isScrolled }, className)} {...props}>
 			<nav className={clsx(styles.nav)}>
 				<ul className={clsx(styles.list)}>
-					<li>new</li>
-					<li>shop</li>
+					<li><Link href='/new-arrivals'>new</Link></li>
+					<li><Link href='/shop'>shop</Link></li>
 				</ul>
 			</nav>
 			<div className={clsx(styles.logo)}>

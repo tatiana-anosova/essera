@@ -23,13 +23,13 @@
 
 .form input:focus,
 .form textarea:focus {
-	border-color: var(--muted-rose);
+	border-color: var(--almond-milk);
 	outline: none;
 }
 
 .button {
 	padding: 12px 0;
-	background: var(--muted-rose);
+	background: var(--almond-milk);
 	color: var(--white);
 	border: none;
 	border-radius: 6px;
@@ -39,7 +39,7 @@
 }
 
 .button:hover {
-	background: var(--dusty-blush);
+	background: var(--warm-gray);
 }
 
 .success {

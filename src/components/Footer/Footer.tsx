@@ -14,9 +14,9 @@ export const Footer = ({ children, className, ...props }: FooterProps) => {
 						<li>
 							<Link href="/size-guide">Size Guide</Link></li>
 						<li>
-							<Link href="/terms">Term of Service</Link>
+							<Link href="/terms-of-service">Term of Service</Link>
 						</li>
-						<li><Link href="/policy">Privacy Policy</Link></li>
+						<li><Link href="/privacy-policy">Privacy Policy</Link></li>
 						<li><Link href="/contact">Contact Information</Link></li>
 					</ul>
 				</div>

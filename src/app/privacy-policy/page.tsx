@@ -1,7 +1,7 @@
 import styles from './page.module.css';
 import clsx from 'clsx';
 
-export default function Policy() {
+export default function PrivacyPolicy() {
 	return (
 		<div className={clsx('page', styles.page)}>
 			<main className={styles.main}>
