@@ -12,7 +12,7 @@ const manrope = Manrope({
 
 const inter = Inter({
     subsets: ['latin'],
-    weight: ['400', '500', '700'],
+    weight: ['100', '300', '500', '700'],
     variable: '--font-inter',
     display: 'swap',
 });

@@ -1,0 +1,161 @@
+.card {
+	position: relative;
+	/*background: #fff;*/
+	/*border-radius: 14px;*/
+	/*box-shadow: 0 2px 12px rgba(0,0,0,0.06);*/
+	/*overflow: hidden;*/
+	/*display: flex;*/
+	/*flex-direction: column;*/
+	/*transition: box-shadow 0.2s;*/
+}
+
+/*.card:hover {*/
+/*	box-shadow: 0 6px 24px rgba(0,0,0,0.12);*/
+/*}*/
+
+.link {
+	color: inherit;
+	text-decoration: none;
+	display: block;
+	flex: 1 1 auto;
+}
+
+.imageWrapper {
+	position: relative;
+	width: 100%;
+	object-fit: cover;
+	aspect-ratio: 2 / 3;
+	overflow: hidden;
+}
+
+.details {
+	margin-top: 16px;
+	padding: 0 16px;
+}
+.label {
+	color: var(--warm-gray);
+	text-transform: capitalize;
+}
+
+/*.label--new {*/
+/*	background: #27ae60;*/
+/*}*/
+/*.label--best {*/
+/*	background: #f39c12;*/
+/*}*/
+/*.label--sell {*/
+/*	background: #e74c3c;*/
+/*}*/
+
+/*.outOfStock {*/
+/*	position: absolute;*/
+/*	top: 50%;*/
+/*	left: 50%;*/
+/*	transform: translate(-50%, -50%);*/
+/*	background: rgba(255,255,255,0.92);*/
+/*	color: #b71c1c;*/
+/*	font-size: 18px;*/
+/*	font-weight: 600;*/
+/*	padding: 10px 20px;*/
+/*	border-radius: 8px;*/
+/*	z-index: 3;*/
+/*}*/
+
+/*.info {*/
+/*	padding: 18px 16px 12px 16px;*/
+/*	display: flex;*/
+/*	flex-direction: column;*/
+/*	gap: 8px;*/
+/*}*/
+
+/*.title {*/
+/*	font-size: 18px;*/
+/*	font-weight: 500;*/
+/*	color: #222;*/
+/*	margin: 0 0 4px 0;*/
+/*	line-height: 1.2;*/
+/*	min-height: 44px;*/
+/*}*/
+
+/*.priceBlock {*/
+/*	display: flex;*/
+/*	align-items: center;*/
+/*	gap: 10px;*/
+/*}*/
+
+/*.price,*/
+/*.discountPrice {*/
+/*	font-size: 18px;*/
+/*	font-weight: 600;*/
+/*	color: #222;*/
+/*}*/
+
+/*.originalPrice {*/
+/*	font-size: 15px;*/
+/*	color: #aaa;*/
+/*	text-decoration: line-through;*/
+/*	margin-left: 6px;*/
+/*}*/
+
+/*.discount {*/
+/*	font-size: 14px;*/
+/*	color: #e74c3c;*/
+/*	font-weight: 500;*/
+/*	margin-left: 4px;*/
+/*}*/
+
+/*.actions {*/
+/*	display: flex;*/
+/*	gap: 10px;*/
+/*	padding: 0 16px 16px 16px;*/
+/*	margin-top: auto;*/
+/*}*/
+
+/*.favButton {*/
+/*	background: none;*/
+/*	border: none;*/
+/*	color: #aaa;*/
+/*	font-size: 22px;*/
+/*	cursor: pointer;*/
+/*	transition: color 0.2s;*/
+/*	padding: 4px;*/
+/*	border-radius: 50%;*/
+/*}*/
+
+/*.favButton:hover,*/
+/*.favActive {*/
+/*	color: #e74c3c;*/
+/*	background: rgba(231,76,60,0.08);*/
+/*}*/
+
+/*.cartButton {*/
+/*	background: var(--color-primary, #0070f3);*/
+/*	color: #fff;*/
+/*	border: none;*/
+/*	border-radius: 8px;*/
+/*	font-size: 15px;*/
+/*	font-weight: 500;*/
+/*	padding: 8px 18px;*/
+/*	cursor: pointer;*/
+/*	transition: background 0.2s;*/
+/*}*/
+
+/*.cartButton:hover {*/
+/*	background: #005bb5;*/
+/*}*/
+
+/*@media (max-width: 600px) {*/
+/*	.card {*/
+/*		border-radius: 10px;*/
+/*	}*/
+/*	.info {*/
+/*		padding: 14px 10px 10px 10px;*/
+/*	}*/
+/*	.actions {*/
+/*		padding: 0 10px 10px 10px;*/
+/*	}*/
+/*	.title {*/
+/*		font-size: 16px;*/
+/*		min-height: 36px;*/
+/*	}*/
+/*}*/
