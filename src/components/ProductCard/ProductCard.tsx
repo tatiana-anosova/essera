@@ -10,12 +10,12 @@ export const ProductCard = ({product, className, onFavoriteToggle, onAddToCart, 
 	const {
 		id,
 		images,
+		slug,
 		title,
 		price,
 		discount,
 		discountPrice,
 		label,
-		link,
 		isFav,
 		inStock = true
 	} = product;
@@ -118,17 +118,17 @@ export const ProductCard = ({product, className, onFavoriteToggle, onAddToCart, 
 			</div>
 			<div className={styles.details}>
 				{label && <div className={clsx(styles.label, styles[`label--${label}`])}>{label}</div>}
-				<Link href={link} className={clsx(styles.link)}>
+				<Link href={`/products/${slug}`} className={clsx(styles.link)}>
 					<h3 className={styles.title}>{title}</h3>
 					<div className={styles.priceBlock}>
 						{discountPrice ? (
 							<>
 								{/*<span className={styles.discountPrice}>$ {discountPrice}</span>*/}
-								<span className={styles.originalPrice}>$ {price}</span>
+								<span className={styles.originalPrice}>${price}</span>
 								{/*{discount && <span className={styles.discount}>-{discount}%</span>}*/}
 							</>
 						) : (
-							<span className={styles.price}>$ {price}</span>
+							<span className={styles.price}>${price}</span>
 						)}
 					</div>
 				</Link>
