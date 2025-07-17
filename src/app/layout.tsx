@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Manrope, Inter, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
-import { Header, Footer } from '@/components';
+import { Header, Footer, ModalManager } from '@/components';
+import { ModalProvider } from '@/contexts/ModalContext';
 
 const manrope = Manrope({
     subsets: ['latin'],
@@ -42,9 +43,12 @@ export default function RootLayout({
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
         </head>
         <body className={`${manrope.variable} ${inter.variable} ${cormorantGaramond.variable} ...`}>
+        <ModalProvider>
             <Header/>
             {children}
             <Footer/>
+            <ModalManager />
+        </ModalProvider>
         </body>
       </html>
   );

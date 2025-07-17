@@ -9,3 +9,6 @@ export * from './ContactForm/ContactForm';
 export * from './ProductCard/ProductCard';
 export * from './ProductList/ProductList';
 export * from './ProductDetails/ProductDetails';
+export * from './Modal/Modal';
+export * from './Modal/ModalManager';
+export * from './Modal/ModalRegistry';

@@ -3,7 +3,7 @@ import { ProductDetailsProps } from './ProductDetails.props';
 import styles from './ProductDetails.module.css';
 import Image from 'next/image';
 import clsx from 'clsx';
-import {ProductCard} from "@/components";
+import { useModal } from '@/contexts/ModalContext';
 
 export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCart, ...props}: ProductDetailsProps) => {
 	const {
@@ -19,12 +19,23 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 		inStock = true
 	} = product;
 
+	const modal = useModal();
+
+	const handleImageClick = (image: string) => {
+		modal.open('imageZoom', {
+			src: image,
+			alt: product.title,
+			size: 'lg'
+		});
+	};
+
 	return (
 		<div className={clsx(styles.product, className)} {...props}>
 			<div className={clsx(styles.list)}>
 				{product.images.map(image => (
 					<div className={clsx(styles.imageWrapper)}
 						 key={image}
+						 onClick={() => handleImageClick(image)}
 					>
 						<Image
 							src={image}

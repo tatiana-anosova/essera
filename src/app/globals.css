@@ -20,6 +20,9 @@
 	--red-dark: #D87373;
 
 	--header-height: 64px;
+
+	--media-mobile: 767px; /* < 768px */
+	--media-tablet: 1023px; /* 768-1023px */
 }
 
 html,
