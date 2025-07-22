@@ -12,3 +12,5 @@ export * from './ProductDetails/ProductDetails';
 export * from './Modal/Modal';
 export * from './Modal/ModalManager';
 export * from './Modal/ModalRegistry';
+export * from './SizeItem/SizeItem';
+export * from './Button/Button';

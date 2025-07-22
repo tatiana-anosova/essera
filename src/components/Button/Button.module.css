@@ -1,0 +1,67 @@
+.button {
+	border: none;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s, border 0.2s;
+	outline: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Manrope', sans-serif;
+	text-transform: uppercase;
+}
+
+/* Sizes */
+.sm {
+	font-size: 12px;
+	padding: 6px 12px;
+}
+
+.md {
+	font-size: 16px;
+	padding: 10px 24px;
+}
+
+.lg {
+	font-size: 20px;
+	padding: 14px 36px;
+}
+
+
+/* Colors */
+.primary {
+	background: var(--dusty-blush);
+	color: var(--soft-charcoal);
+}
+
+.primary:hover:not(.disabled) {
+	background: var(--primary-hover);
+}
+
+.neutral {
+	background: var(--almond-milk);
+	color: var(--soft-charcoal);
+}
+
+.neutral:hover:not(.disabled) {
+	background: var(--neutral-hover);
+}
+
+.transparent {
+	background: transparent;
+	color: var(--soft-charcoal);
+	border: 1px solid var(--border-color);
+}
+
+.transparent:hover:not(.disabled) {
+	background: var(--silk-white);
+	border-color: var(--border-hover);
+}
+
+/* States */
+.disabled,
+.button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	pointer-events: none;
+}

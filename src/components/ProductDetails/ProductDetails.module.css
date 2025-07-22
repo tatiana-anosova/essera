@@ -46,6 +46,29 @@
 	text-transform: capitalize;
 }
 
-.title {
-	margin: 6px 0;
+.block {
+	margin: 24px 0;
 }
+
+.row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.title {
+
+}
+
+.price {
+	color: var(--warm-gray);
+}
+
+.sizeList {
+	margin-top: 8px;
+	display: flex;
+}
+
+.sizeItem {
+	margin-right: 16px;
+}
+

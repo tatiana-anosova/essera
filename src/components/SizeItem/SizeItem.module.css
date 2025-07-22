@@ -1,0 +1,23 @@
+.item {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 6px;
+	min-width: 24px;
+	min-height: 24px;
+	border: 1px solid transparent;
+	cursor: pointer;
+}
+
+.item:hover:not(.disabled) {
+	border: 1px solid var(--almond-milk);
+}
+
+.selected {
+	border: 1px solid var(--soft-charcoal);
+}
+
+.disabled {
+	opacity: 50%;
+	cursor: default;
+}

@@ -14,6 +14,11 @@
 	--pearl-gray: #EAE6E1;
 	--warm-gray: #857C78;
 
+	--primary-hover: #D8AFA3;         /* darker --dusty-blush */
+	--neutral-hover: #E5DBD5;         /* darker --almond-milk */
+	--border-color: #DDD3CA;
+	--border-hover: #CFC4BC;
+
 	--green: #A6D6B2;
 	--green-dark: #80C49F;
 	--red: #E7A1A1;
@@ -53,4 +58,13 @@ p {
 	margin-top: 12px;
 	font-size: 18px;
 	line-height: 1.4;
+}
+
+
+.wFull {
+	width: 100%;
+}
+
+.hFull {
+	height: 100%;
 }
