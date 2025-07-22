@@ -4,11 +4,11 @@ import clsx from 'clsx';
 export default function SizeGuide() {
 	return (
 		<div className={clsx('page', styles.page)}>
-			<main className={styles.main}>
+			<main className={clsx(styles.main)}>
 				<h1>Size Guide</h1>
-				<section className={styles.section}>
+				<section className={clsx(styles.section)}>
 					<div className={clsx(styles.subtitle)}>Bra Size</div>
-					<table className={styles.table}>
+					<table className={clsx(styles.table)}>
 						<thead>
 						<tr>
 							<th>US Size</th>
@@ -89,7 +89,7 @@ export default function SizeGuide() {
 				</section>
 				<section className={styles.section}>
 					<div className={clsx(styles.subtitle)}>Panty Size</div>
-					<table className={styles.table}>
+					<table className={clsx(styles.table)}>
 						<thead>
 						<tr>
 							<th>US Size</th>

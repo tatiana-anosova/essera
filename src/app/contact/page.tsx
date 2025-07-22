@@ -6,7 +6,7 @@ import { ContactForm } from '@/components';
 export default function Contact() {
 	return (
 		<div className={clsx('page', styles.page)}>
-			<main className={styles.main}>
+			<main className={clsx(styles.main)}>
 				<h1>Contact</h1>
 				<div className={clsx(styles.flex)}>
 					<div className={clsx(styles.contact)}>

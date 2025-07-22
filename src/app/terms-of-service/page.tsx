@@ -4,7 +4,7 @@ import clsx from 'clsx';
 export default function TermsOfService() {
 	return (
 		<div className={clsx('page', styles.page)}>
-			<main className={styles.main}>
+			<main className={clsx(styles.main)}>
 				<h1>Term of Service</h1>
 				<div>
 					<div className={clsx(styles.title)}>

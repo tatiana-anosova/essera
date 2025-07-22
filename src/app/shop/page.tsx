@@ -7,7 +7,7 @@ import { ProductList } from '@/components';
 export default function Shop() {
 	return (
 		<div className={clsx('page', styles.page)}>
-			<main className={styles.main}>
+			<main className={clsx(styles.main)}>
 				<h1>Shop</h1>
 				<div className={clsx(styles.list)}>
 					<ProductList products={mockProducts} />

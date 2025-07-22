@@ -7,7 +7,7 @@ import { ProductDetails } from '@/components';
 export default function Product() {
 	return (
 		<div className={clsx('page', styles.page)}>
-			<main className={styles.main}>
+			<main className={clsx(styles.main)}>
 				<ProductDetails product={ mockProduct }/>
 			</main>
 		</div>

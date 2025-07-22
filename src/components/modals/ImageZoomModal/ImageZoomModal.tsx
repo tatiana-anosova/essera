@@ -17,7 +17,7 @@ export const ImageZoomModal = ({ src, alt, onClose }: ImageZoomModalProps) => {
 					src={src}
 					fill
 					alt={alt}
-					className={styles.image}
+					className={clsx(styles.image)}
 				/>
 			</div>
 		</div>

@@ -7,10 +7,10 @@ import Link from 'next/link';
 export const Footer = ({ children, className, ...props }: FooterProps) => {
 	return (
 		<footer className={clsx(styles.footer, className)} {...props}>
-			<div className={styles.top}>
-				<div className={styles.infoCol}>
-					<div className={styles.title}>Info</div>
-					<ul className={styles.list}>
+			<div className={clsx(styles.top)}>
+				<div className={clsx(styles.infoCol)}>
+					<div className={clsx(styles.title)}>Info</div>
+					<ul className={clsx(styles.list)}>
 						<li>
 							<Link href="/size-guide">Size Guide</Link></li>
 						<li>
@@ -20,7 +20,7 @@ export const Footer = ({ children, className, ...props }: FooterProps) => {
 						<li><Link href="/contact">Contact Information</Link></li>
 					</ul>
 				</div>
-				<div className={styles.iconsCol}>
+				<div className={clsx(styles.iconsCol)}>
 					<a href="https://instagram.com/essera.store" target="_blank" rel="noopener noreferrer">
 						<InstagramIcon className={clsx(styles.icon)} />
 					</a>

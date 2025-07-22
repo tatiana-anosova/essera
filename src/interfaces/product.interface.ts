@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface ProductItem {
 	id: number;
 	images: string[];
@@ -17,4 +19,10 @@ export interface ProductItem {
 	sku?: string;
 	createdAt?: string;
 	updatedAt?: string;
+}
+
+export interface Details {
+	id: string;
+	title: string;
+	content: string;
 }

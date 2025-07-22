@@ -4,7 +4,7 @@ import clsx from 'clsx';
 export default function PrivacyPolicy() {
 	return (
 		<div className={clsx('page', styles.page)}>
-			<main className={styles.main}>
+			<main className={clsx(styles.main)}>
 				<h1>Privacy Policy</h1>
 				<div className={clsx(styles.updated)}>
 					Last updated: <span>[July 10th, 2025]</span>

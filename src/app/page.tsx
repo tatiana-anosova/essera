@@ -5,7 +5,7 @@ import clsx from 'clsx';
 export default function Home() {
     return (
         <div className={clsx(styles.page)}>
-            <main className={styles.main}>
+            <main className={clsx(styles.main)}>
                 <Hero/>
                 <Philosophy />
                 <LookBook />

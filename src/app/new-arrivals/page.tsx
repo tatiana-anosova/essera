@@ -4,7 +4,7 @@ import clsx from 'clsx';
 export default function NewArrivals() {
 	return (
 		<div className={clsx('page', styles.page)}>
-			<main className={styles.main}>
+			<main className={clsx(styles.main)}>
 				<h1>New Arrivals</h1>
 
 			</main>

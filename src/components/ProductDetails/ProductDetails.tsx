@@ -5,8 +5,9 @@ import styles from './ProductDetails.module.css';
 import Image from 'next/image';
 import clsx from 'clsx';
 import { useModal } from '@/contexts/ModalContext';
-import { SizeItem, Button } from '@/components';
+import { SizeItem, Button, Accordion } from '@/components';
 import { SizeOption } from '@/interfaces/size.interface';
+import { mockProductDetails } from '@/data/details'
 
 export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCart, ...props}: ProductDetailsProps) => {
 	const {
@@ -95,6 +96,9 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 					>
 						Add to bag
 					</Button>
+				</div>
+				<div className={clsx(styles.block)}>
+					<Accordion items={mockProductDetails} />
 				</div>
 			</div>
 		</div>
