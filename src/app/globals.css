@@ -7,16 +7,13 @@
 	--font-cormorant: '';
 	--white: #ffffff;
 	--black: #000000;
-	--silk-white: #FEF9F6;
+	--silk-white: #FAF8F6;
 	--soft-charcoal: #444444;
 	--dusty-blush: #EACDC2;
 	--almond-milk: #F3ECE7;
 	--pearl-gray: #EAE6E1;
 	--warm-gray: #857C78;
-
 	--rich-brown: #6B4E3D;
-	--graphite: #4A4A4A;
-	--silk-white: #FAF8F6;
 
 	--primary-hover: #D8AFA3;         /* darker --dusty-blush */
 	--neutral-hover: #E5DBD5;         /* darker --almond-milk */
