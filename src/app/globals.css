@@ -35,6 +35,11 @@ body {
 	/*font-family: var(--font-manrope), sans-serif;*/
 	font-family: var(--font-inter), sans-serif;
 	color: var(--soft-charcoal);
+	font-size: 16px;
+	font-weight: 300;
+}
+
+button {
 	font-weight: 300;
 }
 

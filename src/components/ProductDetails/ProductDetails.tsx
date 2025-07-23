@@ -65,7 +65,7 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 				))}
 			</div>
 			<div className={clsx(styles.details)}>
-				{ label && <div className={clsx(styles.label)}>{label}</div>}
+				{label && <div className={clsx(styles.label)}>{label}</div>}
 				<div className={clsx(styles.block, styles.row)}>
 					<div className={clsx(styles.title)}>{title}</div>
 					<div className={clsx(styles.price)}>${price}</div>
@@ -98,7 +98,7 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 					</Button>
 				</div>
 				<div className={clsx(styles.block)}>
-					<Accordion items={mockProductDetails} />
+					<Accordion items={mockProductDetails}/>
 				</div>
 			</div>
 		</div>

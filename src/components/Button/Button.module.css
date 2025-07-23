@@ -30,32 +30,34 @@
 
 /* Colors */
 .primary {
-	background: var(--dusty-blush);
+	background: var(--pearl-gray);
 	color: var(--soft-charcoal);
+	border: 1px solid transparent;
 }
 
 .primary:hover:not(.disabled) {
-	background: var(--primary-hover);
+	background: var(--almond-milk);
 }
 
 .neutral {
-	background: var(--almond-milk);
+	background: var(--silk-white);
 	color: var(--soft-charcoal);
+	border: 1px solid transparent;
 }
 
 .neutral:hover:not(.disabled) {
-	background: var(--neutral-hover);
+	background: var(--almond-milk);
 }
 
 .transparent {
 	background: transparent;
 	color: var(--soft-charcoal);
-	border: 1px solid var(--border-color);
+	border: 1px solid var(--pearl-gray);
 }
 
 .transparent:hover:not(.disabled) {
 	background: var(--silk-white);
-	border-color: var(--border-hover);
+	border: 1px solid var(--silk-white);
 }
 
 /* States */
