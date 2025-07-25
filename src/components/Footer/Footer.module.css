@@ -47,6 +47,7 @@
 }
 
 .list a:visited,
+.list a:active,
 .iconsCol a:visited {
 	color: inherit;
 }
@@ -55,10 +56,6 @@
 .iconsCol a:hover {
 	color: var(--almond-milk);
 	transition: color 0.2s ease;
-}
-
-.list a:active {
-	color: inherit;
 }
 
 /*.list a:focus {*/

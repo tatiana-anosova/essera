@@ -1,5 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import { useScrollY } from '@/hooks/useScrollY';
 import { HeaderProps } from './Header.props';
 import styles from './Header.module.css';
@@ -20,6 +21,8 @@ export const Header = ({ children, className, ...props }: HeaderProps) => {
 			? '/logo/essera-black-2.png'
 			: '/logo/essera-white-2.png'
 
+	const [isSearchOpen, setIsSearchOpen] = useState(false);
+
 	return (
 		<header className={clsx(styles.header, {[styles.transparent]: isHome}, { [styles.scrolled]: isScrolled }, className)} {...props}>
 			<nav className={clsx(styles.nav)}>
@@ -34,9 +37,39 @@ export const Header = ({ children, className, ...props }: HeaderProps) => {
 				</Link>
 			</div>
 			<div className={clsx(styles.profile)}>
-				<span className={clsx("material-icons-outlined", styles.icon)}>search</span>
-				<span className={clsx("material-icons-outlined", styles.icon, styles.cart)}>shopping_bag</span>
+				{/*<span className={clsx("material-icons-outlined", styles.icon)}>search</span>*/}
+				<span
+					className={clsx('material-icons-outlined', styles.icon)}
+					onClick={() => setIsSearchOpen((v) => !v)}
+					tabIndex={0}
+					role="button"
+					aria-label="Open search"
+					style={{cursor: 'pointer'}}
+				>
+				  search
+				</span>
+				<Link href='/checkout'>
+					<span className={clsx("material-icons-outlined", styles.icon, styles.cart)}>shopping_bag</span>
+				</Link>
 			</div>
+			{isSearchOpen && (
+				<div className={styles.searchBlock}>
+					<input
+						type="text"
+						placeholder="Search…"
+						className={styles.searchInput}
+						autoFocus
+					/>
+					<button
+						className={styles.closeSearch}
+						onClick={() => setIsSearchOpen(false)}
+						aria-label="Close search"
+						type="button"
+					>
+						<span className="material-icons-outlined">close</span>
+					</button>
+				</div>
+			)}
 		</header>
 	);
 };
