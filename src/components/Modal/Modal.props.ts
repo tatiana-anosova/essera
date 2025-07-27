@@ -7,4 +7,5 @@ export interface ModalProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElem
 	children: React.ReactNode;
 	className?: string;
 	size?: 'sm' | 'md' | 'lg' | 'xl';
+	type?: 'center' | 'right';
 }

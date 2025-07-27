@@ -1,0 +1,33 @@
+.modal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	height: 24px;
+	padding: 16px;
+	border-bottom: 1px solid var(--pearl-gray);
+}
+
+.list {
+	margin: 16px;
+	flex: 1;
+	overflow-y: auto;
+}
+
+.checkout {
+	flex-shrink: 0;
+	margin-top: auto;
+	border-top: 1px solid var(--pearl-gray);
+	padding: 16px;
+}
+

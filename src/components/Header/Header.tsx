@@ -2,6 +2,7 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useScrollY } from '@/hooks/useScrollY';
+import { useModal } from '@/contexts/ModalContext';
 import { HeaderProps } from './Header.props';
 import styles from './Header.module.css';
 import Image from 'next/image'
@@ -23,6 +24,14 @@ export const Header = ({ children, className, ...props }: HeaderProps) => {
 
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+	const modal = useModal();
+
+	const handleBagClick = () => {
+		modal.open('cartModal', {
+			type: 'right',
+		});
+	};
+
 	return (
 		<header className={clsx(styles.header, {[styles.transparent]: isHome}, { [styles.scrolled]: isScrolled }, className)} {...props}>
 			<nav className={clsx(styles.nav)}>
@@ -37,7 +46,6 @@ export const Header = ({ children, className, ...props }: HeaderProps) => {
 				</Link>
 			</div>
 			<div className={clsx(styles.profile)}>
-				{/*<span className={clsx("material-icons-outlined", styles.icon)}>search</span>*/}
 				<span
 					className={clsx('material-icons-outlined', styles.icon)}
 					onClick={() => setIsSearchOpen((v) => !v)}
@@ -48,9 +56,12 @@ export const Header = ({ children, className, ...props }: HeaderProps) => {
 				>
 				  search
 				</span>
-				<Link href='/checkout'>
-					<span className={clsx("material-icons-outlined", styles.icon, styles.cart)}>shopping_bag</span>
-				</Link>
+				<span
+					className={clsx("material-icons-outlined", styles.icon, styles.cart)}
+					onClick={handleBagClick}
+				>
+					shopping_bag
+				</span>
 			</div>
 			{isSearchOpen && (
 				<div className={styles.searchBlock}>

@@ -29,7 +29,7 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 		modal.open('imageZoom', {
 			src: image,
 			alt: product.title,
-			size: 'lg'
+			size: 'lg',
 		});
 	};
 

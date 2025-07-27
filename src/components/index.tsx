@@ -15,3 +15,4 @@ export * from './Modal/ModalRegistry';
 export * from './SizeItem/SizeItem';
 export * from './Button/Button';
 export * from './Accordion/Accordion';
+export * from './CartItem/CartItem';

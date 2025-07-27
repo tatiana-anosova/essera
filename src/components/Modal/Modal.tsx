@@ -5,7 +5,7 @@ import { ModalProps } from './Modal.props';
 import styles from './Modal.module.css';
 import clsx from 'clsx';
 
-export const Modal = ({ isOpen, onClose, size= 'md', children, className, ...props }: ModalProps) => {
+export const Modal = ({ isOpen, onClose, size= 'md', type = 'center', children, className, ...props }: ModalProps) => {
 	useEffect(() => {
 		if (isOpen) {
 			document.body.style.overflow = 'hidden';
@@ -32,7 +32,7 @@ export const Modal = ({ isOpen, onClose, size= 'md', children, className, ...pro
 	return createPortal(
 		<div className={clsx(styles.overlay)} onClick={onClose}>
 			<div
-				className={clsx(styles.modal, styles[size], className)}
+				className={clsx(styles.modal, styles[size], styles[type], className)}
 				onClick={(e) => e.stopPropagation()}
 			>
 				<span
