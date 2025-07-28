@@ -1,4 +1,17 @@
 .main {
 	max-width: 1200px;
+	height: 100%;
 	margin: 0 auto 64px auto;
+}
+
+.flex {
+	display: flex;
+}
+
+.col {
+	width: 50%;
+}
+
+.col:first-of-type {
+	border-right: 1px solid var(--warm-gray);
 }

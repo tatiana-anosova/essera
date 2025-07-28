@@ -2,7 +2,7 @@
 import { CartModalProps } from './CartModal.props';
 import styles from './cartModal.module.css';
 import clsx from 'clsx';
-import {Button, CartItem, ProductCard} from '@/components';
+import { Button, CartItem } from '@/components';
 import Link from 'next/link';
 import { mockCart } from '@/data/cart';
 

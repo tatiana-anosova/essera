@@ -16,3 +16,7 @@ export * from './SizeItem/SizeItem';
 export * from './Button/Button';
 export * from './Accordion/Accordion';
 export * from './CartItem/CartItem';
+export * from './CheckoutCart/CheckoutCart';
+export * from './CheckoutForm/CheckoutForm';
+export * from './CheckoutProductItem/CheckoutProductItem';
+export * from './PromocodeInput/PromocodeInput';

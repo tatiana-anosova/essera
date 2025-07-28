@@ -33,11 +33,18 @@
 
 html,
 body {
+	height: 100%;
 	/*font-family: var(--font-manrope), sans-serif;*/
 	font-family: var(--font-inter), sans-serif;
 	color: var(--soft-charcoal);
 	font-size: 16px;
 	font-weight: 300;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 button {
@@ -49,7 +56,12 @@ body {
 }
 
 .page {
+	flex: 1 1 auto;
 	padding-top: var(--header-height);
+}
+
+main {
+	flex: 1 1 auto;
 }
 
 h1 {
@@ -66,6 +78,10 @@ p {
 	line-height: 1.4;
 }
 
+input {
+	font-weight: 300;
+	padding: 8px 16px;
+}
 
 .wFull {
 	width: 100%;

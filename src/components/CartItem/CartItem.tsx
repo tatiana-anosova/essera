@@ -10,11 +10,11 @@ export const CartItem = ({product, size, color, quantity, onRemove, onQuantityCh
 		<div className={clsx(styles.cartItem, className)} {...props}>
 			<div className={clsx(styles.imageWrapper)}>
 				<Image
+					className={clsx(styles.image)}
 					src={product.images[0]}
 					alt={product.title}
 					width={120}
 					height={150}
-					className={clsx(styles.image)}
 				/>
 			</div>
 			<div className={clsx(styles.info)}>

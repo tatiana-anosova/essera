@@ -1,0 +1,26 @@
+.promocode {
+	position: relative;
+	display: flex;
+	gap: 16px;
+	width: 100%;
+}
+
+.input {
+	flex: 1;
+}
+
+.input:focus {
+	border-color: inherit;
+}
+
+.apply {
+
+}
+
+.error {
+	position: absolute;
+	left: 0;
+	bottom: -20px;
+	color: var(--red-dark);
+	font-size: 14px;
+}

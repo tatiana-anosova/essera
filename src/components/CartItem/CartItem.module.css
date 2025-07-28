@@ -41,7 +41,8 @@
 }
 
 .meta {
-	color: rgba(34, 34, 34, 0.5); /* soft-charcoal */
+	color: var(--warm-gray);
+	/*color: rgba(34, 34, 34, 0.5); !* soft-charcoal *!*/
 	font-size: 14px;
 	display: flex;
 	gap: 12px;
