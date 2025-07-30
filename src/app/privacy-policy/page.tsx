@@ -6,73 +6,79 @@ export default function PrivacyPolicy() {
 		<div className={clsx('page', styles.page)}>
 			<main className={clsx(styles.main)}>
 				<h1>Privacy Policy</h1>
-				<div className={clsx(styles.updated)}>
-					Last updated: <span>[July 10th, 2025]</span>
-				</div>
-				<p>
-					At <strong>Essera</strong>, we value your trust — and that includes protecting your privacy. This
-					Privacy Policy outlines how we collect, use, and safeguard your personal information when you visit
-					our website <strong>essera.store</strong>,
-					place an order, or interact with us online.
+
+				<p className={clsx(styles.updated)}>Effective Date: <span>[July 10th, 2025]</span></p>
+
+				<p>Essera (“we”, “our”, or “us”) respects your privacy and is committed to protecting your personal
+					information. This Privacy Policy explains how we collect, use, and share your information when you
+					visit our website <strong>essera.store</strong>, make a purchase, or otherwise interact with us.
 				</p>
-				<div className={clsx(styles.subtitle)}>1. What We Collect</div>
-				<p>
-					We may collect the following types of personal data when you use our site:
-				</p>
+
+				<div className={clsx(styles.subtitle)}>1. Information We Collect</div>
+
+				<p>We may collect the following types of information:</p>
 				<ul>
-					<li>Name, email address, and shipping/billing address</li>
-					<li>Payment information (processed securely via third-party services)</li>
-					<li>Purchase history</li>
-					<li>Device and browser data (via cookies and analytics tools)</li>
-					<li>Any information you voluntarily provide (e.g., in contact forms or email subscriptions)</li>
+					<li><strong>Personal Information:</strong> Name, email address, shipping and billing address, phone
+						number, payment details.
+					</li>
+					<li><strong>Order Information:</strong> Details of your purchases and order history.</li>
+					<li><strong>Device Information:</strong> IP address, browser type, cookies, and browsing behavior on
+						our site.
+					</li>
 				</ul>
+
 				<div className={clsx(styles.subtitle)}>2. How We Use Your Information</div>
-				<p>
-					We use your data to:
-				</p>
+				<p>We use your information to:</p>
 				<ul>
-					<li>Process and fulfill your orders</li>
-					<li>Communicate with you about your purchases</li>
-					<li>Send updates or promotional emails (only with your consent)</li>
-					<li>Improve our website experience</li>
+					<li>Process and fulfill orders</li>
+					<li>Provide customer support</li>
+					<li>Send order updates and promotional emails (if subscribed)</li>
+					<li>Improve our website and services</li>
 					<li>Comply with legal obligations</li>
 				</ul>
+
 				<div className={clsx(styles.subtitle)}>3. Sharing Your Information</div>
-				<p>We never sell your personal data.</p>
-				<p>We may share it with trusted third-party services that help us operate our business, such as:</p>
+				<p>We may share your information with trusted third parties, including:</p>
 				<ul>
-					<li>Payment processors (e.g., Stripe, PayPal)</li>
-					<li>Email services (e.g., Mailchimp, Klaviyo)</li>
-					<li>Analytics providers (e.g., Google Analytics)</li>
+					<li>Payment processors (e.g., Shopify Payments, Stripe, PayPal)</li>
+					<li>Shipping providers (e.g., USPS, FedEx)</li>
+					<li>Email marketing platforms (if you subscribe to our newsletter)</li>
+					<li>Legal authorities when required by law</li>
 				</ul>
-				<p>All partners are required to protect your data according to privacy standards.</p>
+
 				<div className={clsx(styles.subtitle)}>4. Cookies</div>
-				<p>We use cookies to enhance your experience and understand how our site is used. You can manage your
-					cookie preferences through your browser settings.</p>
+				<p>We use cookies to enhance your browsing experience. Cookies help us understand how visitors interact
+					with our website. You can disable cookies through your browser settings.</p>
+
 				<div className={clsx(styles.subtitle)}>5. Your Rights</div>
-				<p>Depending on your location, you may have the right to:</p>
+				<p>If you are a resident of California or the European Union, you may have certain rights regarding your
+					personal data, including:</p>
 				<ul>
-					<li>Access the personal data we hold about you</li>
-					<li>Request correction or deletion</li>
-					<li>Withdraw consent for marketing communications</li>
-					<li>Request data portability</li>
+					<li>The right to access, update, or delete your information</li>
+					<li>The right to object to certain processing</li>
+					<li>The right to withdraw consent</li>
 				</ul>
+				<p>To exercise your rights, please contact us at <a
+					href="mailto:support@essera.store">support@essera.store</a>.</p>
+
+				<div className={clsx(styles.subtitle)}>6. Data Retention</div>
+				<p>We retain your personal data only as long as necessary to fulfill the purposes described in this
+					policy, unless a longer retention period is required by law.</p>
+
+				<div className={clsx(styles.subtitle)}>7. Third-Party Links</div>
+				<p>Our website may contain links to third-party websites. We are not responsible for their content or
+					privacy practices. We encourage you to read their privacy policies.</p>
+
+				<div className={clsx(styles.subtitle)}>8. Changes to This Policy</div>
+				<p>We may update this Privacy Policy from time to time. We will notify you of significant changes by
+					updating the effective date at the top of this page.</p>
+
+				<div className={clsx(styles.subtitle)}>9. Contact Us</div>
+				<p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
 				<p>
-					To make a request, please email us at&nbsp;
-					<a href="mailto:privacy@essera.store">privacy@essera.store</a>
+					<strong>Email:</strong> <a href="mailto:support@essera.store">support@essera.store</a><br/>
+					<strong>Website:</strong> <a href="https://essera.store">essera.store</a>
 				</p>
-				<div className={clsx(styles.subtitle)}>6. Data Security</div>
-				<p>We take reasonable technical and organizational steps to protect your data from unauthorized access,
-					loss, or misuse.</p>
-				<div className={clsx(styles.subtitle)}>7. Changes to This Policy</div>
-				<p>We may update this Privacy Policy from time to time. Changes will be posted on this page with the
-					updated date above.</p>
-				<div className={clsx(styles.subtitle)}>8. Contact Us</div>
-				<p>If you have any questions about this Privacy Policy or how your data is handled, feel free to contact
-					us at:</p>
-				<p><a href="mailto:privacy@essera.store">privacy@essera.store</a></p>
-				<p>Essera</p>
-				<p>Austin, TX</p>
 			</main>
 		</div>
 	);
