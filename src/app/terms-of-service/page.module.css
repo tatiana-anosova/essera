@@ -3,8 +3,12 @@
 	margin: 0 auto 64px auto;
 }
 
-.title {
+.subtitle {
 	margin-top: 24px;
 	font-size: 20px;
+	color: var(--warm-gray);
+}
+
+.updated span {
 	color: var(--warm-gray);
 }
