@@ -3,18 +3,18 @@ import styles from './SizeItem.module.css';
 import clsx from 'clsx';
 
 export const SizeItem = ({ sizeOption, selected = false, onSizeSelect, children, className, ...props }: SizeItemProps) => {
-	const { value, label, stock } = sizeOption;
-	const isDisabled = stock === 0;
+	const { size, label, quantity, inStock } = sizeOption;
+	const isDisabled = (inStock === false || quantity === 0);
 
 	return (
 		<div className={clsx(styles.item, className, {
 			[styles.selected]: selected,
 			[styles.disabled]: isDisabled,
 		})}
-			 onClick={() => !isDisabled && onSizeSelect?.(value)}
+			 onClick={() => !isDisabled && onSizeSelect?.(size)}
 			 {...props}
 		>
-			{label || value}
+			{label || size}
 		</div>
 	);
 };

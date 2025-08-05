@@ -1,10 +1,11 @@
 import styles from './page.module.css';
 import clsx from 'clsx';
-import { mockProducts } from '@/data/products';
+import { fetchProducts } from '@/api/products';
 import { ProductList } from '@/components';
 
-export default function NewArrivals() {
-	const productList = mockProducts.filter(product => product.label === 'new');
+export default async function NewArrivals() {
+	const products = await fetchProducts();
+	const productList = products.filter(product => product.label === 'new');
 
 	return (
 		<div className={clsx('page', styles.page)}>

@@ -9,16 +9,17 @@ import clsx from 'clsx';
 export const ProductCard = ({product, className, onFavoriteToggle, onAddToCart, ...props}: ProductCardProps) => {
 	const {
 		id,
-		images,
 		slug,
 		title,
-		price,
+		basePrice,
 		discount,
 		discountPrice,
 		label,
 		isFav,
-		inStock = true
+		variants,
 	} = product;
+
+	const images = variants[0].images;
 
 	const [current, setCurrent] = useState(0);
 	const [prev, setPrev] = useState<number | null>(null);
@@ -29,7 +30,7 @@ export const ProductCard = ({product, className, onFavoriteToggle, onAddToCart, 
 		setPrev(current);
 		setDirection(dir);
 		setCurrent(nextIdx);
-		setTimeout(() => setPrev(null), 400); // 400ms = время анимации
+		setTimeout(() => setPrev(null), 400);
 	};
 
 	const showPrev = (e: React.MouseEvent) => {
@@ -124,11 +125,11 @@ export const ProductCard = ({product, className, onFavoriteToggle, onAddToCart, 
 						{discountPrice ? (
 							<>
 								{/*<span className={styles.discountPrice}>$ {discountPrice}</span>*/}
-								<span className={styles.originalPrice}>${price}</span>
+								<span className={styles.originalPrice}>${basePrice}</span>
 								{/*{discount && <span className={styles.discount}>-{discount}%</span>}*/}
 							</>
 						) : (
-							<span className={styles.price}>${price}</span>
+							<span className={styles.price}>${basePrice}</span>
 						)}
 					</div>
 				</Link>

@@ -1,5 +1,6 @@
 export interface SizeOption {
-	value: string;
+	size: string;
 	label?: string;
-	stock?: number;
+	quantity?: number;
+	inStock?: boolean;
 }

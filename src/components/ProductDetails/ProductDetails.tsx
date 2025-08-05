@@ -6,24 +6,21 @@ import Image from 'next/image';
 import clsx from 'clsx';
 import { useModal } from '@/contexts/ModalContext';
 import { SizeItem, Button, Accordion } from '@/components';
-import { SizeOption } from '@/interfaces/size.interface';
 import { mockProductDetails } from '@/data/details'
 
 export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCart, ...props}: ProductDetailsProps) => {
 	const {
-		id,
-		images,
-		slug,
 		title,
-		price,
+		basePrice,
 		discount,
 		discountPrice,
 		label,
-		isFav,
-		inStock = true
+		variants,
 	} = product;
 
 	const modal = useModal();
+
+	const images = variants[0].images;
 
 	const handleImageClick = (image: string) => {
 		modal.open('imageZoom', {
@@ -33,13 +30,25 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 		});
 	};
 
-	// mock data
-	const productSizes: SizeOption[] = [
-		{ value: 'XS', stock: 2 },
-		{ value: 'S', stock: 45 },
-		{ value: 'M', stock: 0 },
-		{ value: 'L', stock: 7 },
-	];
+	function sortSizes(sizes: { size: string }[]): { size: string }[] {
+		return sizes.slice().sort((a, b) => {
+			const matchA = a.size.match(/^(\d+)([A-ZА-Я])$/i);
+			const matchB = b.size.match(/^(\d+)([A-ZА-Я])$/i);
+
+			if (!matchA || !matchB) return 0;
+
+			const numA = parseInt(matchA[1], 10);
+			const numB = parseInt(matchB[1], 10);
+
+			if (numA !== numB) {
+				return numA - numB;
+			}
+
+			return matchA[2].localeCompare(matchB[2]);
+		});
+	}
+
+	const productSizes = sortSizes(product.variants[0].sizes);
 
 	const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
@@ -50,7 +59,7 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 	return (
 		<div className={clsx(styles.product, className)} {...props}>
 			<div className={clsx(styles.list)}>
-				{product.images.map(image => (
+				{images.map(image => (
 					<div className={clsx(styles.imageWrapper)}
 						 key={image}
 						 onClick={() => handleImageClick(image)}
@@ -68,7 +77,7 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 				{label && <div className={clsx(styles.label)}>{label}</div>}
 				<div className={clsx(styles.block, styles.row)}>
 					<div className={clsx(styles.title)}>{title}</div>
-					<div className={clsx(styles.price)}>${price}</div>
+					<div className={clsx(styles.price)}>${basePrice}</div>
 				</div>
 				<div className={clsx(styles.block)}>
 					<div className={clsx(styles.row)}>
@@ -78,10 +87,10 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 					<div className={clsx(styles.sizeList)}>
 						{productSizes.map((sizeOption) => (
 							<SizeItem
-								key={sizeOption.value}
+								key={sizeOption.size}
 								className={clsx(styles.sizeItem)}
 								sizeOption={sizeOption}
-								selected={selectedSize === sizeOption.value}
+								selected={selectedSize === sizeOption.size}
 								onSizeSelect={setSelectedSize}
 							/>
 						))}

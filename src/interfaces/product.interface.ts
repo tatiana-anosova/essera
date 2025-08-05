@@ -1,22 +1,20 @@
-import { ReactNode } from 'react';
+import { SizeOption } from "@/interfaces/size.interface";
 
 export interface ProductItem {
 	id: number;
-	images: string[];
 	slug: string,
 	title: string;
-	price: number;
+	description?: string;
+	basePrice: number;
 	discount?: number;
 	discountPrice?: number;
 	label?: 'new' | 'best' | 'sell' | '';
 	isFav?: boolean;
-	description?: string;
 	rating?: number;
 	reviewsCount?: number;
-	inStock?: boolean;
 	category?: string;
 	brand?: string;
-	sku?: string;
+	variants: Variants[];
 	createdAt?: string;
 	updatedAt?: string;
 }
@@ -25,4 +23,12 @@ export interface Details {
 	id: string;
 	title: string;
 	content: string;
+}
+
+export interface Variants {
+	id: number;
+	color: string;
+	colorHex: string;
+	images: string[];
+	sizes: SizeOption[];
 }
