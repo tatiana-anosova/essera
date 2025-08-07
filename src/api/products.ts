@@ -1,4 +1,4 @@
-import { ProductItem } from '@/interfaces/product.interface';
+import { ProductItem, Details } from '@/interfaces/product.interface';
 export async function fetchProducts(): Promise<ProductItem[]> {
 	const res = await fetch('http://localhost:3001/products');
 	if (!res.ok) throw new Error('Failed to fetch products');
@@ -13,6 +13,12 @@ export async function fetchProductById(id: number): Promise<ProductItem> {
 
 export async function fetchProductBySlug(slug: string): Promise<ProductItem> {
 	const res = await fetch(`http://localhost:3001/products/slug/${slug}`);
+	if (!res.ok) throw new Error('Failed to fetch product');
+	return res.json();
+}
+
+export async function fetchDetailsBySlug(slug: string): Promise<Details[]> {
+	const res = await fetch(`http://localhost:3001/products/slug/${slug}/details`);
 	if (!res.ok) throw new Error('Failed to fetch product');
 	return res.json();
 }

@@ -1,12 +1,14 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ProductDetailsProps } from './ProductDetails.props';
 import styles from './ProductDetails.module.css';
 import Image from 'next/image';
 import clsx from 'clsx';
 import { useModal } from '@/contexts/ModalContext';
 import { SizeItem, Button, Accordion } from '@/components';
-import { mockProductDetails } from '@/data/details'
+// import { mockProductDetails } from '@/data/details'
+import { fetchDetailsBySlug } from '@/api/products';
+import { Details } from '@/interfaces/product.interface';
 
 export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCart, ...props}: ProductDetailsProps) => {
 	const {
@@ -18,8 +20,22 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 		variants,
 	} = product;
 
-	const modal = useModal();
+	const [details, setDetails] = useState<Details[]>([]);
 
+	useEffect(() => {
+		const getDetails = async (): Promise<void> => {
+			try {
+				const data = await fetchDetailsBySlug(product.slug);
+				setDetails(data);
+			} catch (error) {
+				console.error('Failed to fetch product details:', error);
+			}
+		};
+
+		getDetails();
+	}, [product.slug]);
+
+	const modal = useModal();
 	const images = variants[0].images;
 
 	const handleImageClick = (image: string) => {
@@ -107,7 +123,7 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 					</Button>
 				</div>
 				<div className={clsx(styles.block)}>
-					<Accordion items={mockProductDetails}/>
+					<Accordion items={details}/>
 				</div>
 			</div>
 		</div>

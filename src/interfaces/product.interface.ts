@@ -20,7 +20,9 @@ export interface ProductItem {
 }
 
 export interface Details {
-	id: string;
+	id: number;
+	productId: number;
+	key: string;
 	title: string;
 	content: string;
 }
