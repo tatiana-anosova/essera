@@ -1,8 +1,6 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
 
-type ApiOptions = RequestInit & {
-	accessToken?: string;
-};
+type ApiOptions = RequestInit & { accessToken?: string };
 
 export async function apiClient<T>(path: string, options: ApiOptions = {}): Promise<T> {
 	const { accessToken, headers, ...rest } = options;
@@ -17,8 +15,12 @@ export async function apiClient<T>(path: string, options: ApiOptions = {}): Prom
 		},
 	});
 
-	if (!res.ok) {
-		throw new Error(`API error: ${res.status} ${res.statusText}`);
-	}
+	if (!res.ok) throw new Error(`API error: ${res.status} ${res.statusText}`);
 	return res.json();
+}
+
+export async function apiClientAuth<T>(path: string, options: RequestInit = {}) {
+	const { useUserStore } = await import('@/stores/userStore');
+	const token = useUserStore.getState().accessToken;
+	return apiClient<T>(path, { ...options, accessToken: token ?? undefined });
 }

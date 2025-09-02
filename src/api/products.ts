@@ -1,5 +1,5 @@
 import { ProductItem, Details } from '@/interfaces/product.interface';
-import { apiClient } from '@/api/apiClients';
+import { apiClient } from '@/api/apiClient';
 
 export async function fetchProducts(): Promise<ProductItem[]> {
 	return apiClient<ProductItem[]>('/products');

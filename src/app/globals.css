@@ -29,6 +29,12 @@
 
 	--media-mobile: 767px; /* < 768px */
 	--media-tablet: 1023px; /* 768-1023px */
+
+	--control-height: 40px;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
 }
 
 html,

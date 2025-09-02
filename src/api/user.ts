@@ -1,11 +1,6 @@
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { User } from '@/interfaces/user.interface';
-import { apiClient } from '@/api/apiClients';
+import type { User } from '@/interfaces/user.interface';
+import { apiClientAuth } from '@/api/apiClient';
 
 export async function getUser(): Promise<User> {
-	const supabase = createClientComponentClient();
-	const { data: { session } } = await supabase.auth.getSession();
-	const accessToken = session?.access_token;
-
-	return apiClient<User>('/user', { accessToken });
+	return apiClientAuth<User>('/users/me');
 }

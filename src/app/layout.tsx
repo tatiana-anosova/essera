@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Manrope, Inter, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
-import { Header, Footer, ModalManager } from '@/components';
+import { Header, Footer, ModalManager, UserInitializer } from '@/components';
 import { ModalProvider } from '@/contexts/ModalContext';
+import { AuthDebug } from '@/components/AuthDebug/AuthDebug';
 
 const manrope = Manrope({
     subsets: ['latin'],
@@ -44,6 +45,8 @@ export default function RootLayout({
         </head>
         <body className={`${manrope.variable} ${inter.variable} ${cormorantGaramond.variable} ...`}>
         <ModalProvider>
+            <UserInitializer />
+            {/*<AuthDebug />*/}
             <Header/>
             {children}
             <Footer/>
