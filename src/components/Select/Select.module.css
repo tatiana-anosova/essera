@@ -1,0 +1,6 @@
+.select {
+	width: 100%;
+	height: var(--control-height);
+	padding: 10px;
+	border: 1px solid var(--pearl-gray);
+}

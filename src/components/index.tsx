@@ -22,3 +22,6 @@ export * from './CheckoutProductItem/CheckoutProductItem';
 export * from './PromocodeInput/PromocodeInput';
 export * from './DeliveryForm/DeliveryForm';
 export * from './UserInitializer/UserInitializer';
+export * from './Input/Input';
+export * from './Select/Select';
+export * from './Textarea/Textarea';
