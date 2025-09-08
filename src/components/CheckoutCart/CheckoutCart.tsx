@@ -1,52 +1,73 @@
 'use client';
+import clsx from 'clsx';
+import Link from 'next/link';
 import { CheckoutCartProps } from './CheckoutCart.props';
 import styles from './CheckoutCart.module.css';
-import clsx from 'clsx';
-import { CheckoutProductItem, PromocodeInput } from '@/components';
-import { mockCart } from '@/data/cart';
+import { CheckoutProductItem, PromocodeInput, Button } from '@/components';
+import { useCartStore } from '@/stores/cartStore';
 import { pluralize } from '@/utils/plural';
 
-export const CheckoutCart = ({ className, ...props}: CheckoutCartProps) => {
-	const handleApply = (code: string) => {
-		console.log('Promocode:', code);
-	}
+export const CheckoutCart = ({ className, ...props }: CheckoutCartProps) => {
+	const items = useCartStore((s) => s.items);
 
-	const subtotal = mockCart.reduce((sum, item) => sum + item.product.price, 0);
+	const subtotal = items.reduce((sum, it) => sum + it.product.price * it.quantity, 0);
+	const totalQty = items.reduce((sum, it) => sum + it.quantity, 0);
+	const isEmpty = items.length === 0;
+
+	const handleApply = (code: string) => {
+		// Hook up promocode flow here (server validation, totals update, etc.)
+		console.log('Promocode:', code);
+	};
 
 	return (
 		<div className={clsx(styles.checkout, className)} {...props}>
 			<div className={clsx(styles.list)}>
-				{mockCart.map(item =>
-					<CheckoutProductItem
-						className={clsx(styles.item)}
-						key={item.product.id}
-						product={item.product}
-						size={item.size}
-						color={item.color}
-						quantity={item.quantity}
-					/>
+				{isEmpty ? (
+					<div className={styles.empty}>Your cart is empty</div>
+				) : (
+					items.map((it) => (
+						<CheckoutProductItem
+							className={clsx(styles.item)}
+							key={`${it.product.id}-${it.size}-${it.color}`}
+							product={it.product}
+							size={it.size}
+							color={it.color}
+							quantity={it.quantity}
+						/>
+					))
 				)}
 			</div>
+
+			{/* Promocode */}
 			<div className={clsx(styles.promocode)}>
-				<PromocodeInput
-					onApply={handleApply}
-					isLoading={false}
-					error={''}
-				/>
+				<PromocodeInput onApply={handleApply} isLoading={false} error={''} />
 			</div>
+
+			{/* Summary */}
 			<div className={clsx(styles.summary)}>
 				<div className={clsx(styles.subtotal)}>
-					<div className={clsx(styles.text)}>Subtotal · {pluralize(mockCart.length, 'item')}</div>
-					<div className={clsx(styles.count)}>${subtotal}</div>
+					<div className={clsx(styles.text)}>
+						Subtotal · {pluralize(totalQty, 'item')}
+					</div>
+					<div className={clsx(styles.count)}>${subtotal.toFixed(2)}</div>
 				</div>
+
 				<div className={clsx(styles.shipping)}>
 					<div className={clsx(styles.text)}>Shipping</div>
 					<div className={clsx(styles.empty)}>Enter shipping address</div>
 				</div>
+
 				<div className={clsx(styles.total)}>
 					<div>Total</div>
-					<div>${subtotal}</div>
+					<div>${subtotal.toFixed(2)}</div>
 				</div>
+
+				{/* Continue CTA can stay here (still read-only) */}
+				<Link href="/checkout/payment">
+					<Button className={clsx(styles.proceed, 'wFull')} size="md" color="primary" disabled={isEmpty}>
+						Continue to payment
+					</Button>
+				</Link>
 			</div>
 		</div>
 	);
