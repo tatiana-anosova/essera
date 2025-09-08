@@ -7,35 +7,34 @@ import clsx from 'clsx';
 export const Accordion = ({ items, children, className, ...props }: AccordionProps) => {
 	const [openId, setOpenId] = useState<string | null>(null);
 
-	const handleToggle = (id: string) => {
-		setOpenId(prev => (prev === id ? null : id));
+	const handleToggle = (id: string | number) => {
+		const idStr = String(id);
+		setOpenId(prev => (prev === idStr ? null : idStr));
 	};
 
 	return (
 		<div className={clsx(styles.accordion, className)} {...props}>
-			{items.map(item => (
-				<div key={item.id} className={clsx(styles.item)}>
-					<button
-						className={clsx(styles.header)}
-						onClick={() => handleToggle(item.id)}
-						aria-expanded={openId === item.id}
-						aria-controls={`accordion-content-${item.id}`}
-					>
-						<span>{item.title}</span>
-						<span className={clsx(styles.icon)}>
-              {openId === item.id ? '−' : '+'}
-            </span>
-					</button>
-					{openId === item.id && (
-						<div
-							id={`accordion-content-${item.id}`}
-							className={clsx(styles.content)}
+			{items.map(item => {
+				const idStr = String(item.id);
+				return (
+					<div key={idStr} className={clsx(styles.item)}>
+						<button
+							className={clsx(styles.header)}
+							onClick={() => handleToggle(item.id)}
+							aria-expanded={openId === idStr}
+							aria-controls={`accordion-content-${idStr}`}
 						>
-							{item.content}
-						</div>
-					)}
-				</div>
-			))}
+							<span>{item.title}</span>
+							<span className={clsx(styles.icon)}>{openId === idStr ? '−' : '+'}</span>
+						</button>
+						{openId === idStr && (
+							<div id={`accordion-content-${idStr}`} className={clsx(styles.content)}>
+								{item.content}
+							</div>
+						)}
+					</div>
+				);
+			})}
 		</div>
 	);
 };

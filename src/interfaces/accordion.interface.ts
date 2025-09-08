@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 export interface AccordionItem {
-	id: string;
+	id: string | number;
 	title: string;
-	content: React.ReactNode;
+	content: ReactNode;
 }

@@ -13,7 +13,7 @@
 .title {
 	display: flex;
 	align-items: center;
-	height: 24px;
+	height: 56px;
 	padding: 16px;
 	border-bottom: 1px solid var(--pearl-gray);
 }
@@ -22,6 +22,10 @@
 	margin: 16px;
 	flex: 1;
 	overflow-y: auto;
+}
+
+.total {
+	padding: 16px;
 }
 
 .checkout {

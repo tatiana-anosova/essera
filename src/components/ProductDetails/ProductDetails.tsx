@@ -1,42 +1,83 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { ProductDetailsProps } from './ProductDetails.props';
-import styles from './ProductDetails.module.css';
+
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import clsx from 'clsx';
+
+import { ProductDetailsProps } from './ProductDetails.props';
+import styles from './ProductDetails.module.css';
+
 import { useModal } from '@/contexts/ModalContext';
 import { SizeItem, Button, Accordion } from '@/components';
-// import { mockProductDetails } from '@/data/details'
-import { fetchDetailsBySlug } from '@/api/products';
-import { Details } from '@/interfaces/product.interface';
 
-export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCart, ...props}: ProductDetailsProps) => {
-	const {
-		title,
-		basePrice,
-		discount,
-		discountPrice,
-		label,
-		variants,
-	} = product;
+import { fetchDetailsBySlug } from '@/api/products';
+import type { Details, Variants } from '@/interfaces/product.interface';
+import type { SizeOption } from '@/interfaces/size.interface';
+import type { AccordionItem } from '@/interfaces/accordion.interface';
+import { useCartStore } from '@/stores/cartStore';
+
+export const ProductDetails = ({
+								   product,
+								   className,
+								   onFavoriteToggle, // not used yet, but kept for API parity
+								   ...props
+							   }: ProductDetailsProps) => {
+	const { title, basePrice, discountPrice, label } = product;
+
+	/* ------------------ Variant, images, sizes ------------------ */
+
+	// Pick current variant (for now the first one). Memoized for stability.
+	const currentVariant = useMemo<Variants | null>(() => {
+		return product?.variants?.length ? product.variants[0] : null;
+	}, [product?.variants]);
+
+	// Images come from the current variant; fallback to empty.
+	const images = useMemo<string[]>(() => currentVariant?.images ?? [], [currentVariant]);
+
+	// Sort sizes like "32A, 32B, 34A, 34B, ..." (numeric asc, then letter asc)
+	const productSizes = useMemo(() => {
+		const sizes = currentVariant?.sizes ?? [];
+		return sizes.slice().sort((a, b) => {
+			const A = a.size.match(/^(\d+)([A-ZА-Я])$/i);
+			const B = b.size.match(/^(\d+)([A-ZА-Я])$/i);
+			if (!A || !B) return 0;
+			const nA = parseInt(A[1], 10);
+			const nB = parseInt(B[1], 10);
+			if (nA !== nB) return nA - nB;
+			return A[2].localeCompare(B[2]);
+		});
+	}, [currentVariant]);
+
+	/* ------------------ Details (accordion data) ------------------ */
 
 	const [details, setDetails] = useState<Details[]>([]);
 
 	useEffect(() => {
-		const getDetails = async (): Promise<void> => {
+		// Fetch product details by slug once slug changes.
+		(async () => {
 			try {
 				const data = await fetchDetailsBySlug(product.slug);
 				setDetails(data);
-			} catch (error) {
-				console.error('Failed to fetch product details:', error);
+			} catch (err) {
+				console.error('Failed to fetch product details:', err);
 			}
-		};
-
-		getDetails();
+		})();
 	}, [product.slug]);
 
+	// Normalize Details[] into AccordionItem[] expected by <Accordion />
+	const accordionItems: AccordionItem[] = useMemo(
+		() =>
+			details.map((d) => ({
+				id: d.id ?? d.key,
+				title: d.title || d.key,
+				content: d.content,
+			})),
+		[details]
+	);
+
+	/* ------------------ UI handlers ------------------ */
+
 	const modal = useModal();
-	const images = variants[0].images;
 
 	const handleImageClick = (image: string) => {
 		modal.open('imageZoom', {
@@ -46,60 +87,76 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 		});
 	};
 
-	function sortSizes(sizes: { size: string }[]): { size: string }[] {
-		return sizes.slice().sort((a, b) => {
-			const matchA = a.size.match(/^(\d+)([A-ZА-Я])$/i);
-			const matchB = b.size.match(/^(\d+)([A-ZА-Я])$/i);
-
-			if (!matchA || !matchB) return 0;
-
-			const numA = parseInt(matchA[1], 10);
-			const numB = parseInt(matchB[1], 10);
-
-			if (numA !== numB) {
-				return numA - numB;
-			}
-
-			return matchA[2].localeCompare(matchB[2]);
-		});
-	}
-
-	const productSizes = sortSizes(product.variants[0].sizes);
-
+	const addFromProduct = useCartStore((s) => s.addFromProduct);
 	const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
-	const handleClick = () => {
-		console.log('Add to bag');
+	const handleAddToBag = () => {
+		if (!currentVariant) return;
+
+		const hasSizes = (currentVariant.sizes?.length ?? 0) > 0;
+		let sizeObj: SizeOption | null = null;
+
+		// If the product has sizes, require a selected valid size in stock
+		if (hasSizes) {
+			sizeObj =
+				currentVariant.sizes.find(
+					(s) => s.size === selectedSize || s.label === selectedSize
+				) ?? null;
+
+			if (
+				!sizeObj ||
+				sizeObj.inStock === false ||
+				(typeof sizeObj.quantity === 'number' && sizeObj.quantity <= 0)
+			) {
+				// Optionally show a toast here: "Please select an available size"
+				return;
+			}
+		}
+
+		addFromProduct({ product, variant: currentVariant, size: sizeObj, quantity: 1 });
+		// Optionally open cart modal / show toast here.
 	};
+
+	const buttonDisabled =
+		!!currentVariant &&
+		(currentVariant.sizes?.length ?? 0) > 0 &&
+		!selectedSize;
+
+	/* ------------------ Render ------------------ */
 
 	return (
 		<div className={clsx(styles.product, className)} {...props}>
+			{/* Gallery */}
 			<div className={clsx(styles.list)}>
-				{images.map(image => (
-					<div className={clsx(styles.imageWrapper)}
-						 key={image}
-						 onClick={() => handleImageClick(image)}
+				{images.map((image) => (
+					<div
+						key={image}
+						className={clsx(styles.imageWrapper)}
+						onClick={() => handleImageClick(image)}
 					>
-						<Image
-							src={image}
-							fill
-							alt={title}
-							className={clsx(styles.image)}
-						/>
+						<Image src={image} fill alt={title} className={clsx(styles.image)} />
 					</div>
 				))}
 			</div>
+
+			{/* Right column: info */}
 			<div className={clsx(styles.details)}>
 				{label && <div className={clsx(styles.label)}>{label}</div>}
+
 				<div className={clsx(styles.block, styles.row)}>
 					<div className={clsx(styles.title)}>{title}</div>
-					<div className={clsx(styles.price)}>${basePrice}</div>
+					<div className={clsx(styles.price)}>
+						${typeof discountPrice === 'number' ? discountPrice : basePrice}
+					</div>
 				</div>
+
+				{/* Sizes */}
 				<div className={clsx(styles.block)}>
 					<div className={clsx(styles.row)}>
 						<div>Size</div>
 						<div>Size Guide</div>
 					</div>
+
 					<div className={clsx(styles.sizeList)}>
 						{productSizes.map((sizeOption) => (
 							<SizeItem
@@ -112,18 +169,23 @@ export const ProductDetails = ({product, className, onFavoriteToggle, onAddToCar
 						))}
 					</div>
 				</div>
+
+				{/* Add to bag */}
 				<div className={clsx(styles.block, styles.row)}>
 					<Button
 						className={clsx('wFull')}
 						size="md"
 						color="neutral"
-						onClick={handleClick}
+						onClick={handleAddToBag}
+						disabled={buttonDisabled}
 					>
 						Add to bag
 					</Button>
 				</div>
+
+				{/* Details accordion */}
 				<div className={clsx(styles.block)}>
-					<Accordion items={details}/>
+					<Accordion items={accordionItems} />
 				</div>
 			</div>
 		</div>
