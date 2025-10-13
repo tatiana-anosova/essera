@@ -95,6 +95,17 @@ describe('<ProductCard />', () => {
 		render(<ProductCard product={productWithoutLabel} />);
 		expect(screen.queryByText(/new|best|sell/i)).toBeNull();
 	})
+
+	// it('does not render favorite icon when onFavoriteToggle is not provided', () => {
+	// 	render(<ProductCard product={makeProduct()} />);
+	// 	expect(screen.queryByText(/favorite|favorite_border/)).toBeNull();
+	// })
+
+	it('renders placeholder when images array is empty', () => {
+		const p = makeProduct({ variants: [{ id: 1, color: 'Black', colorHex: '#000', images: [], sizes: [] }] });
+		render(<ProductCard product={p} />);
+		expect(screen.getByRole('img', { name: /milana bra/i })).toHaveAttribute('src', '/placeholder-image.webp');
+	});
 })
 
 afterEach(() => {
