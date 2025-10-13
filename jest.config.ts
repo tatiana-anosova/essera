@@ -10,6 +10,8 @@ const customJestConfig = {
 		'^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
 	},
 	testPathIgnorePatterns: ['/node_modules/', '/.next/', '/playwright-report/'],
+
+	// collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
 };
 
 export default createJestConfig(customJestConfig);

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ProductCard } from "@/components/ProductCard/ProductCard";
 import type { ProductCardProps } from './ProductCard.props';
@@ -58,7 +58,9 @@ describe('<ProductCard />', () => {
 		expect(duringSrcs).toEqual(expect.arrayContaining(['/img1.jpg', '/img2.jpg']));
 
 		// after animation
-		jest.advanceTimersByTime(400);
+		await act(async () => {
+			jest.advanceTimersByTime(400);
+		});
 		await waitFor(() => {
 			expect(screen.getAllByRole('img', { name: /milana bra/i }).length).toBe(1);
 		})
@@ -66,7 +68,9 @@ describe('<ProductCard />', () => {
 
 		// go to prev image
 		await user.click(screen.getByText('arrow_back_ios'));
-		jest.advanceTimersByTime(400);
+		await act(async () => {
+			jest.advanceTimersByTime(400);
+		});
 		await waitFor(() => {
 			expect(screen.getAllByRole('img', { name: /milana bra/i }).length).toBe(1);
 
