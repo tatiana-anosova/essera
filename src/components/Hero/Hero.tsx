@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export const Hero = ({ children, className, ...props }: HeroProps) => {
 	return (
-		<section className={clsx(styles.hero, className)}>
+		<section className={clsx(styles.hero, className)} data-testid="hero">
 			<Image src="/hero.jpg"
 				alt="Hero"
 				fill

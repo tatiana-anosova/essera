@@ -5,7 +5,7 @@ import clsx from 'clsx';
 export const Philosophy = ({ children, className, ...props }: PhilosophyProps) => {
 
 	return (
-		<section className={clsx(styles.philosophy, className)} {...props}>
+		<section className={clsx(styles.philosophy, className)} data-testid="philosophy" {...props}>
 			<div className={clsx(styles.wrapper)}>
 				<div className={clsx(styles.title)}>Essera Philosophy</div>
 				{/*<div className={clsx(styles.text)}>*/}

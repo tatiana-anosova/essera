@@ -23,7 +23,7 @@ export const LookBook = ({ children, className, ...props }: LookBookProps) => {
 	]
 
 	return (
-		<section className={clsx(styles.lookbook, className)} {...props}>
+		<section className={clsx(styles.lookbook, className)} data-testid="lookbook" {...props}>
 			<div className={clsx(styles.wrapper)}>
 				<h2 className={clsx(styles.title)}>Essera LookBook</h2>
 				<div className={clsx(styles.text)}>This is how Essera lives — in soft mornings, quiet strength, and the

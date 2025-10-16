@@ -6,7 +6,7 @@ import clsx from 'clsx';
 export const LookBookCard = ({img, alt, title, className, ...props}: LookBookCardProps) => {
 
 	return (
-		<div className={clsx(styles.card, className)} {...props}>
+		<div className={clsx(styles.card, className)} data-testid="lookbook-card" {...props}>
 			<div className={clsx(styles.wrapper)}>
 				<Image
 					src={img || './lookbook/lookbook-1.jpg'}
