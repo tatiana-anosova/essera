@@ -3,25 +3,40 @@
 }
 
 .wrapper {
-	max-width: 1200px;
 	margin: 0 auto;
-	padding: 64px 16px;
+	padding: 32px 12px;
+}
+
+@media (min-width: 1023px) {
+	.wrapper {
+		max-width: 1200px;
+		padding: 64px 16px;
+	}
 }
 
 .title {
 	font-family: var(--font-cormorant), serif;
-	font-size: 42px;
+	font-size: 32px;
 	margin: 16px 0;
 	text-align: center;
 	color: var(--rich-brown);
 }
+@media (min-width: 1023px) {
+	.title {
+		font-size: 48px;
+	}
+}
 
 .text {
-	margin: 16px auto 40px auto;
+	margin: 12px auto 20px auto;
 	text-align: center;
 	max-width: 720px;
 	font-size: 16px;
 	line-height: 1.5;
+}
+
+@media (min-width: 1023px) {
+	margin: 16px auto 40px auto;
 }
 
 .list {

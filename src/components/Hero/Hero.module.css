@@ -1,14 +1,34 @@
 .hero {
 	position: relative;
 	width: 100vw;
-	height: 100vh;
+	height: 300px;
 	margin-left: calc(-50vw + 50%);
 	overflow: hidden;
 }
 
-.hero :global(img) {
-	object-fit: cover;
+@media (min-width: 1023px) {
+	.hero {
+		height: 100vh;
+	}
 }
+
+.image {
+	width: 100%;
+	height: 100%;
+	background-image: url("/hero-mobile.jpg");
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+@media (min-width: 1023px) {
+	.image {
+		background-image: url("/hero.jpg");
+	}
+}
+
+/*.hero :global(img) {*/
+/*	object-fit: cover;*/
+/*}*/
 
 .overlay {
 	position: absolute;
@@ -30,5 +50,5 @@
 }
 
 .subtitle {
-
+	text-align: center;
 }
